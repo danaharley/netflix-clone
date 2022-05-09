@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Header from '../components/Header'
 
 const Home: NextPage = () => {
   return (
@@ -8,8 +9,8 @@ const Home: NextPage = () => {
         <title>Netflix</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      let's build netflix clone
       {/* Header */}
+      <Header />
       <main>
         {/* Banner */}
         <section>
