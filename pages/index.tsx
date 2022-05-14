@@ -1,6 +1,7 @@
 import Head from "next/head"
 import Banner from "../components/Banner"
 import Header from "../components/Header"
+import Row from "../components/Row"
 import { Movie } from "../type"
 import requests from "../utils/requests"
 
@@ -38,12 +39,11 @@ const Home = ({
         <Banner netflixOriginals={netflixOriginals} />
         <section>
           {/* Row */}
-          {/* Row */}
-          {/* Row */}
-          {/* Row */}
-          {/* Row */}
-          {/* Row */}
-          {/* Row */}
+          <Row />
+          <Row />
+          <Row />
+          <Row />
+          <Row />
         </section>
       </main>
     </div>
