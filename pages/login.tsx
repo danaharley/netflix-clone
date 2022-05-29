@@ -84,12 +84,17 @@ function Login() {
         <button
           type="submit"
           className="w-full rounded bg-[#e50914] py-3 font-semibold"
+          onClick={() => setLogin(true)}
         >
           Sign In
         </button>
         <div className="text-[gray]">
           New to Netflix?
-          <button className="ml-1 text-white hover:underline">
+          <button
+            type="submit"
+            className="ml-1 text-white hover:underline"
+            onClick={() => setLogin(false)}
+          >
             Sign Up Now
           </button>
         </div>
