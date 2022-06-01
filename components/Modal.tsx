@@ -65,24 +65,29 @@ function Modal() {
             controls={true}
             playing
           />
-          <div className="absolute bottom-9 left-0 flex w-full items-center px-3 sm:bottom-10">
+          {/* <div className="absolute bottom-9 left-0 flex w-full items-center px-3 sm:bottom-10">
             <button className="modalButton">
               <PlusIcon className="modalIcons" />
             </button>
-          </div>
+          </div> */}
         </div>
         <div className="flex space-x-16 rounded-b-md bg-[#181818] px-10 py-8">
-          <div className="space-y-6 text-lg">
-            <div className="flex items-center space-x-2 text-sm">
-              <p className="font-semibold text-green-400">
-                {movie?.vote_average * 10}% Match
-              </p>
-              <p className="font-light">
-                {movie?.release_date || movie?.first_air_date}
-              </p>
-              <div className="flex h-4 items-center justify-center rounded border border-white/40 px-1.5 text-xs">
-                HD
+          <div space-y-6 text-lg>
+            <div className="mb-4 flex items-center justify-between text-sm">
+              <div className="flex items-center space-x-2">
+                <p className="font-semibold text-green-400">
+                  {movie?.vote_average * 10}% Match
+                </p>
+                <p className="font-light">
+                  {movie?.release_date || movie?.first_air_date}
+                </p>
+                <div className="flex h-4 items-center justify-center rounded border border-white/40 px-1.5 text-xs">
+                  HD
+                </div>
               </div>
+              <button className="modalButton">
+                <PlusIcon className="h-3.5 w-3.5" />
+              </button>
             </div>
             <div className="flex flex-col gap-x-10 gap-y-4 font-light md:flex-row">
               <p className="w-full">{movie?.overview}</p>
