@@ -65,7 +65,7 @@ function Modal() {
           <XIcon className="h-6 w-6" />
         </button>
 
-        <div className="relative pt-[56.25%]">
+        <div className="group relative pt-[56.25%]">
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=${trailer}`}
             width="100%"
@@ -73,11 +73,12 @@ function Modal() {
             style={{ position: "absolute", top: "0", left: "0" }}
             playing={playing}
             muted={muted}
+            controls={true}
           />
           <div className="absolute bottom-9 left-0 flex w-full items-center justify-between px-3 sm:bottom-10 sm:px-7 md:px-10">
             <div className="flex space-x-2">
               <button
-                className="flex items-center gap-x-2 rounded bg-white px-3 text-xl font-bold text-black transition hover:bg-[#e6e6e6] sm:px-5 md:px-8"
+                className="hidden items-center gap-x-2 rounded bg-white px-3 text-xl font-bold text-black transition hover:bg-[#e6e6e6] group-hover:flex sm:px-5 md:px-8"
                 onClick={() => setPlaying(!playing)}
               >
                 {playing ? (
