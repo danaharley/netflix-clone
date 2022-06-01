@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react"
+import { BASE_URL, API_KEY } from "../utils/requests"
 import { useRecoilState } from "recoil"
 import { modalState, movieState } from "../atoms/modalAtom"
 import MuiModal from "@mui/material/Modal"
+import ReactPlayer from "react-player/lazy"
+import { Element, Genre } from "../type"
 import {
   PlusIcon,
   ThumbUpIcon,
@@ -9,9 +12,6 @@ import {
   VolumeOffIcon,
   VolumeUpIcon,
 } from "@heroicons/react/outline"
-import { Element, Genre } from "../type"
-import { BASE_URL, API_KEY } from "../utils/requests"
-import ReactPlayer from "react-player/lazy"
 import { FaPlay, FaPause } from "react-icons/fa"
 
 function Modal() {
@@ -22,16 +22,12 @@ function Modal() {
   const [playing, setPlaying] = useState(true)
   const [muted, setMuted] = useState(false)
 
-  console.log("trailer:", trailer, "genres:", genres)
-
   const fetchMovie = async () => {
     const data = await fetch(
       `${BASE_URL}/${movie?.media_type === "tv" ? "tv" : "movie"}/${
         movie?.id
       }?api_key=${API_KEY}&language=en-US&append_to_response=videos`
     ).then((response) => response.json())
-
-    console.log(data)
 
     if (data?.videos) {
       const index = data.videos.results.findIndex(
@@ -78,34 +74,40 @@ function Modal() {
             playing={playing}
             muted={muted}
           />
-          <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
+          <div className="absolute bottom-9 left-0 flex w-full items-center justify-between px-3 sm:bottom-10 sm:px-7 md:px-10">
             <div className="flex space-x-2">
               <button
-                className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6]"
+                className="flex items-center gap-x-2 rounded bg-white px-3 text-xl font-bold text-black transition hover:bg-[#e6e6e6] sm:px-5 md:px-8"
                 onClick={() => setPlaying(!playing)}
               >
                 {playing ? (
                   <>
-                    <FaPause className="h-7 w-7" /> Pause
+                    <FaPause className="modalIcons" />
+                    <span className="text-sm sm:text-base md:text-xl">
+                      Pause
+                    </span>
                   </>
                 ) : (
                   <>
-                    <FaPlay className="h-7 w-7" /> Play
+                    <FaPlay className="modalIcons" />
+                    <span className="text-sm sm:text-base md:text-xl">
+                      Play
+                    </span>
                   </>
                 )}
               </button>
               <button className="modalButton">
-                <PlusIcon className="h-7 w-7" />
+                <PlusIcon className="modalIcons" />
               </button>
               <button className="modalButton">
-                <ThumbUpIcon className="h-7 w-7" />
+                <ThumbUpIcon className="modalIcons" />
               </button>
             </div>
             <button className="modalButton" onClick={() => setMuted(!muted)}>
               {muted ? (
-                <VolumeOffIcon className="h-6 w-6" />
+                <VolumeOffIcon className="modalIcons" />
               ) : (
-                <VolumeUpIcon className="h-6 w-6" />
+                <VolumeUpIcon className="modalIcons" />
               )}
             </button>
           </div>
@@ -124,7 +126,7 @@ function Modal() {
               </div>
             </div>
             <div className="flex flex-col gap-x-10 gap-y-4 font-light md:flex-row">
-              <p className="w-5/6">{movie?.overview}</p>
+              <p className="w-full">{movie?.overview}</p>
               <div className="flex flex-col space-y-3 text-sm">
                 <div>
                   <span className="text-[gray]">Genres: </span>
