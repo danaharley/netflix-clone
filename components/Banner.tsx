@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Image from "next/image"
 import { Movie } from "../type"
 import { IMG_BASE_URL } from "../utils/requests"
@@ -16,7 +16,7 @@ function Banner({ netflixOriginals }: Props) {
   const [, setShowModal] = useRecoilState(modalState)
   const [, setCurrentMovie] = useRecoilState(movieState)
 
-  React.useEffect(() => {
+  useEffect(() => {
     setMovies(
       netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
     )

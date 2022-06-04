@@ -5,7 +5,7 @@ import { modalState, movieState } from "../atoms/modalAtom"
 import MuiModal from "@mui/material/Modal"
 import ReactPlayer from "react-player/lazy"
 import { Element, Genre } from "../type"
-import { PlusIcon, ThumbUpIcon, XIcon } from "@heroicons/react/outline"
+import { PlusIcon, XIcon } from "@heroicons/react/outline"
 
 function Modal() {
   const [movie] = useRecoilState(movieState)
@@ -65,11 +65,6 @@ function Modal() {
             controls={true}
             playing
           />
-          {/* <div className="absolute bottom-9 left-0 flex w-full items-center px-3 sm:bottom-10">
-            <button className="modalButton">
-              <PlusIcon className="modalIcons" />
-            </button>
-          </div> */}
         </div>
         <div className="flex space-x-16 rounded-b-md bg-[#181818] px-10 py-8">
           <div space-y-6 text-lg>

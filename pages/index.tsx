@@ -6,7 +6,7 @@ import Row from "../components/Row"
 import { Movie } from "../type"
 import requests from "../utils/requests"
 import { useRecoilValue } from "recoil"
-import { modalState } from "../atoms/modalAtom"
+import { modalState, movieState } from "../atoms/modalAtom"
 import Modal from "../components/Modal"
 
 interface Props {
@@ -31,6 +31,7 @@ const Home = ({
   documentaries,
 }: Props) => {
   const showModal = useRecoilValue(modalState)
+  const movie = useRecoilValue(movieState)
 
   return (
     <div
@@ -39,7 +40,7 @@ const Home = ({
       }`}
     >
       <Head>
-        <title>Netflix</title>
+        <title>{movie?.title || movie?.original_name || "Home"}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Header */}
